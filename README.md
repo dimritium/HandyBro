@@ -7,4 +7,11 @@ since firefox is having issues with selenium, I recommend not using it. The one 
 will work only at Chandigarh University (Gharuan, Mohali)
 
 Make sure you have ```python 2.7+``` installed
+
+For installing dependencies run 
+
+```python
+pip install -r requirements.txt
+```
+
 After meeting the requirements just double click ```bro.py``` file
