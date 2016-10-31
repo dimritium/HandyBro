@@ -15,3 +15,10 @@ pip install -r requirements.txt
 ```
 
 After meeting the requirements just double click ```bro.py``` file
+
+More functionality for command-line user:
+
+```python
+python bro.py sea items-to-be-searched
+```
+replace 'items-to-be-searched' with respective query and automatically 5 tabs will be opened with respect to that query in your default browser
