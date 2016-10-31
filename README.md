@@ -21,4 +21,4 @@ More functionality for command-line user:
 ```python
 python bro.py sea items-to-be-searched
 ```
-replace 'items-to-be-searched' with respective query and automatically 5 tabs will be opened with respect to that query in your default browser
+replace 'items-to-be-searched' with respective query and automatically 5 tabs will be opened with based on google's top 5 results
