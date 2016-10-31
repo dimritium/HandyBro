@@ -13,10 +13,11 @@ For installing dependencies run
 ```python
 pip install -r requirements.txt
 ```
+### For one click login:
 
 After meeting the requirements just double click ```bro.py``` file
 
-More functionality for command-line user:
+### More functionality for command-line user:
 
 ```python
 python bro.py sea items-to-be-searched
