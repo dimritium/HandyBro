@@ -4,6 +4,7 @@
 import requests,sys,webbrowser,bs4
 from selenium import webdriver
 import easygui
+from fake_useragent import UserAgent
 
 class Brow:
 
@@ -20,7 +21,9 @@ class Brow:
 
 		try:
 			rs=requests.get('http://www.google.com')
-			if '172.16.2' in rs.url: #might return status code 200 even if not authenticated (redirect issue)
+			rs_sec=requests.get('http://www.fb.com')
+			soup=bs4.BeautifulSoup(rs_sec.text,'lxml')
+			if '172.16.2' in rs.url or 'class="blocked"' in str(soup): #might return status code 200 even if not authenticated (redirect issue)
 				raise Exception
 			else:
 				print 'Already Connected'
@@ -44,7 +47,9 @@ class Brow:
 				
 				try:
 					rs=requests.get('http://www.google.com')
-					if '172.16.2' in rs.url:
+					rs_sec=requests.get('http://www.fb.com')
+					soup=bs4.BeautifulSoup(rs_sec.text,'lxml')
+					if '172.16.2' in rs.url or 'class="blocked"' in str(soup):
 						print 'Raising exception'
 						raise Exception
 					else:
@@ -62,7 +67,10 @@ class Brow:
 
 	def multiSearch(self,args):
 		print ('Googling...')
-		res=requests.get('http://google.com/search?q='+' '.join(sys.argv[1:]))
+		ua=UserAgent()
+		headers=ua.chrome
+		print headers
+		res=requests.get('http://www.google.com/search?q='+' '.join(sys.argv[1:]),headers=headers)
 		res.raise_for_status()
 		soup=bs4.BeautifulSoup(res.text,'lxml')
 		linkElems=soup.select('.r a')
