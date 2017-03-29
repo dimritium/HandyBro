@@ -22,7 +22,7 @@ class Brow:
 		try:
 			rs=requests.get('http://www.google.com')
 			rs_sec=requests.get('http://www.fb.com')
-			soup=bs4.BeautifulSoup(rs_sec.text,'lxml')
+			soup=bs4.BeautifulSoup(rs_sec.text,'html.parser')
 			if '172.16.2' in rs.url or 'class="blocked"' in str(soup): #might return status code 200 even if not authenticated (redirect issue)
 				raise Exception
 			else:
@@ -48,8 +48,8 @@ class Brow:
 				try:
 					rs=requests.get('http://www.google.com')
 					rs_sec=requests.get('http://www.fb.com')
-					soup=bs4.BeautifulSoup(rs_sec.text,'lxml')
-					if '172.16.2' in rs.url or 'class="blocked"' in str(soup):
+					soup=bs4.BeautifulSoup(rs_sec.text,'html.parser')
+					if '172.16.2' in rs.url and 'class="blocked"' in str(soup):
 						print 'Raising exception'
 						raise Exception
 					else:
